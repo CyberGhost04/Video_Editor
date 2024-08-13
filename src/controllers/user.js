@@ -46,6 +46,7 @@ const logUserOut = (req, res) => {
 const sendUserInfo = (req, res) => {
   DB.update();
   const user = DB.users.find((user) => user.id === req.userId);
+  if(user === undefined) res.status(200).json({});
   res.json({ username: user.username, name: user.name });
 };
 
